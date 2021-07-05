@@ -50,11 +50,11 @@ def errorate(datasetname):
     rating = 0.0
     fr = os.listdir(datasetname)
     label = []
+    dataset, trainlabel = handwritingClassTest()
     for i in fr:
         label.append(i.split('_')[0])
     for i in range(len(fr)):
         info = img2vector('testDigits/' + fr[i])
-        dataset, trainlabel = handwritingClassTest()
         res = KnnClassfier(info, trainlabel, dataset, 3)
         if res == label[i]:
             rating += 1.0
